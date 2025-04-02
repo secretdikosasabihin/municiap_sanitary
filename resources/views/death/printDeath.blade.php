@@ -328,7 +328,7 @@
             height: 20px;
             /* border: 1px solid red; */
             top: 738px;
-            right: 110px;
+            right: 90px;
         }
 
         .date1 {

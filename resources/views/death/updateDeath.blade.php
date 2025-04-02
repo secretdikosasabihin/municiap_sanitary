@@ -103,26 +103,24 @@
                                     value="{{ old('citizenship', $death->citizenship) }}">
                             </div>
                         </div>
-
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Residence</label>
-                                <input type="text" name="updateResidence" class="form-control" required
+                                <input type="text" name="residence" class="form-control" required
                                     style="border: 1px solid;" value="{{ old('residence', $death->residence) }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Occupation</label>
-                                <input type="text" name="occupation" class="form-control"
-                                    style="border: 1px solid;"
+                                <input type="text" name="occupation" class="form-control" style="border: 1px solid;"
                                     value="{{ old('occupation', $death->occupation) }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Insurance</label>
-                                <select class="form-select" name="updateRemarks" style="border: 1px solid;">
+                                <select class="form-select" name="remarks" style="border: 1px solid;">
                                     <option value="with insurance" {{ old('remarks', $death->remarks) == 'with insurance' ? 'selected' : '' }}>WITH INSURANCE</option>
                                     <option value="without insurance" {{ old('remarks', $death->remarks) == 'without insurance' ? 'selected' : '' }}>WITHOUT INSURANCE</option>
                                 </select>
@@ -134,7 +132,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Father's Name</label>
-                                <input type="text" name="updateName_of_father" class="form-control" required
+                                <input type="text" name="name_of_father" class="form-control" required
                                     style="border: 1px solid;"
                                     value="{{ old('name_of_father', $death->name_of_father) }}">
                             </div>
@@ -142,7 +140,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Mother's Name</label>
-                                <input type="text" name="updateName_of_mother" class="form-control" required
+                                <input type="text" name="name_of_mother" class="form-control" required
                                     style="border: 1px solid;"
                                     value="{{ old('name_of_mother', $death->name_of_mother) }}">
                             </div>
@@ -154,7 +152,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Informant's Name</label>
-                                <input type="text" name="updateInformant_name" class="form-control" required
+                                <input type="text" name="informant_name" class="form-control" required
                                     style="border: 1px solid;"
                                     value="{{ old('informant_name', $death->informant_name) }}">
                             </div>
@@ -162,7 +160,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Informant's Address</label>
-                                <input type="text" name="updateInformant_address" class="form-control" required
+                                <input type="text" name="informant_address" class="form-control" required
                                     style="border: 1px solid;"
                                     value="{{ old('informant_address', $death->informant_address) }}">
                             </div>
@@ -425,47 +423,43 @@
 <!-- citizenship -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const selectElement = document.getElementById("updateCitizenshipSelect");
-        const otherInput = document.getElementById("updateCitizenship_otherInput");
-        const hiddenInput = document.getElementById("updateCitizenshipHidden");
+        function setupUpdateCauseOfDeathHandler() {
+            const selectElement = document.getElementById("updateCitizenshipSelect");
+            const otherInput = document.getElementById("updateCitizenship_otherInput");
+            const hiddenInput = document.getElementById("updateCitizenshipHidden");
 
-        if (!selectElement || !otherInput || !hiddenInput) {
-            console.error("One or more elements not found.");
-            return;
-        }
-
-        function toggleOtherInput() {
-            if (selectElement.value === "OTHERS") {
-                otherInput.style.display = "block";
-                hiddenInput.value = otherInput.value || "OTHERS";
-            } else {
-                otherInput.style.display = "none";
-                otherInput.value = "";
-                hiddenInput.value = selectElement.value;
+            if (!selectElement || !otherInput || !hiddenInput) {
+                console.error("Update cause of death elements missing!");
+                return;
             }
+
+            function toggleOtherInput() {
+                if (selectElement.value === "OTHERS") {
+                    otherInput.style.display = "block";
+                    hiddenInput.value = otherInput.value || "OTHERS";
+                } else {
+                    otherInput.style.display = "none";
+                    otherInput.value = "";
+                    hiddenInput.value = selectElement.value;
+                }
+            }
+
+            // ✅ Auto-display input if the previous value was custom
+            if (hiddenInput.value !== "FILIPINO" && hiddenInput.value !== "") {
+                selectElement.value = "OTHERS";
+                otherInput.style.display = "block";
+                otherInput.value = hiddenInput.value;
+            }
+
+            toggleOtherInput(); // Run on load
+            selectElement.addEventListener("change", toggleOtherInput);
+            otherInput.addEventListener("input", () => hiddenInput.value = otherInput.value);
         }
 
-        // ✅ Automatically show input field if "OTHERS" was selected before
-        if (hiddenInput.value !== "FILIPINO" && hiddenInput.value !== "") {
-            selectElement.value = "OTHERS";
-            otherInput.style.display = "block";
-            otherInput.value = hiddenInput.value; // Keep previous custom input value
-        }
-
-        // Run function on page load
-        toggleOtherInput();
-
-        // Listen for changes in the select field
-        selectElement.addEventListener("change", toggleOtherInput);
-
-        // Update hidden input when text field changes
-        otherInput.addEventListener("input", function () {
-            hiddenInput.value = otherInput.value;
-        });
+        // Setup for Update Form only
+        setupUpdateCauseOfDeathHandler();
     });
 </script>
-
-<!-- Remarks -->
 
 <!-- relationship -->
 <script>
@@ -492,7 +486,7 @@
             }
 
             // ✅ Auto-display input if the previous value was custom
-            if (!["MOTHER", "FATHER", "GRANDMOTHER", "GRANDFATHER", "SON", "DAUGHTER", "SIBLING"].includes(hiddenInput.value) && hiddenInput.value !== "") {
+            if (!["MOTHER", "FATHER", "GRANDMOTHER", "GRANDFATHER", "SON", "DAUGHTER", "SIBLING", "SPOUSE", "WIFE"].includes(hiddenInput.value) && hiddenInput.value !== "") {
                 selectElement.value = "OTHERS";
                 otherInput.style.display = "block";
                 otherInput.value = hiddenInput.value;

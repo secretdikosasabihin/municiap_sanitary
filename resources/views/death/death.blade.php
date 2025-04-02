@@ -235,7 +235,7 @@
                                 <td>{{ $death->place_of_death }}</td>
                                 <td>{{ $death->civil_status }}</td>
                                 <td>{{ $death->religion }}</td>
-                                <td>{{ $death->citizenship }}</td>
+                                <td>{{ $death->citizenship}}</td>
                                 <td>{{ $death->residence }}</td>
                                 <td>{{ $death->name_of_father }}</td>
                                 <td>{{ $death->name_of_mother }}</td>

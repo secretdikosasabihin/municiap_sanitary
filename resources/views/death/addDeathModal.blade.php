@@ -86,12 +86,12 @@
                                 <label class="form-label">Citizenship</label>
                                 <select id="citizenshipSelect" class="form-select" style="border: 1px solid;">
                                     <option value="FILIPINO">FILIPINO</option>
-                                    <option value="OTHERS">OTHERS</option>
+                                    <option value="OTHERS">Others</option>
                                 </select>
                                 <input type="text" name="citizenship_other" id="citizenship_otherInput"
                                     class="form-control mt-2" placeholder="Enter citizenship"
                                     style="display: none; border: 1px solid;">
-                                <input type="hidden" name="citizenship" id="citizenshipHidden" >
+                                <input type="hidden" name="citizenship" id="citizenshipHidden" value="FILIPINO">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -186,7 +186,8 @@
                                 <input type="text" name="relationship_other" id="relationship_otherInput"
                                     class="form-control mt-2" placeholder="Enter relationship"
                                     style="display: none; border: 1px solid;">
-                                <input type="hidden" name="relationship" id="relationshipHidden" value="SINGLE">
+                                <input type="hidden" name="relationship" id="relationshipHidden"
+                                    value="MOTHER">
                             </div>
                         </div>
                     </div>
@@ -203,7 +204,8 @@
                                 <input type="text" name="cause_of_death_a_other" id="cause_of_death_a_otherInput"
                                     class="form-control mt-2" placeholder="Enter cause of death A"
                                     style="display: none; border: 1px solid;">
-                                <input type="hidden" name="cause_of_death_a" id="cause_of_death_aHidden" value="CARDIO-RESPIRATORY ARREST">
+                                <input type="hidden" name="cause_of_death_a" id="cause_of_death_aHidden"
+                                    value="CARDIO-RESPIRATORY ARREST">
                             </div>
                         </div>
                         <div class="col-md-3">
