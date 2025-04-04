@@ -19,6 +19,8 @@ class HealthCard extends Model
         'gender',
         'place_of_employment',
         'designation',
+        'barangay',
+        'inspector_name',
         'date_of_issuance',
         'date_of_expiration',
         'print_code'

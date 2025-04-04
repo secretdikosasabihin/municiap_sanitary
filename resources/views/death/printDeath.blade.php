@@ -32,7 +32,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 113px;
+            top: 111px;
             left: 160px;
         }
 
@@ -43,7 +43,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 133px;
+            top: 131px;
             left: 200px;
         }
 
@@ -120,7 +120,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 245px;
+            top: 243px;
             left: 512px;
         }
 
@@ -130,8 +130,8 @@
             justify-content: center;
             align-items: end;
             height: 20px;
-            top: 245px;
-            left: 605px;
+            top: 243px;
+            left: 610px;
         }
 
         .days {
@@ -140,7 +140,7 @@
             justify-content: center;
             align-items: end;
             height: 20px;
-            top: 245px;
+            top: 243px;
             left: 665px;
         }
 
@@ -206,7 +206,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 375px;
+            top: 373px;
             left: 300px;
         }
 
@@ -217,7 +217,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 375px;
+            top: 373px;
             left: 542px;
         }
 
@@ -228,7 +228,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 442px;
+            top: 440px;
             left: 255px;
         }
 
@@ -239,7 +239,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 463px;
+            top: 461px;
             left: 255px;
         }
 
@@ -250,7 +250,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 486px;
+            top: 483px;
             left: 255px;
         }
 
@@ -272,7 +272,7 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 695px;
+            top: 693px;
             left: 89px;
         }
 
@@ -394,7 +394,7 @@
             height: 20px;
             /* border: 1px solid red; */
             top: 955px;
-            right: 150px;
+            right: 170px;
         }
 
         .prep_pos {
@@ -405,7 +405,7 @@
             height: 20px;
             /* border: 1px solid red; */
             top: 979px;
-            right: 123px;
+            right: 155px;
         }
 
         .date3 {
@@ -427,7 +427,7 @@
             height: 20px;
             /* border: 1px solid     red; */
             top: 1170px;
-            left: 170px;
+            left: 200px;
         }
     </style>
 </head>

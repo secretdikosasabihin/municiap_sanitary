@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Cards PDF</title>
     <style>
-
         * {
             text-transform: uppercase;
             margin: 0;
@@ -16,13 +16,14 @@
         body {
             display: flex;
             flex-direction: column;
-            font-family: Arial, Helvetica, sans-serif;
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             font-size: 13px;
             font-weight: bold;
             justify-content: center;
             align-items: center;
         }
-        
+
         .card {
             display: flex;
             width: 7.4in;
@@ -31,7 +32,7 @@
 
         .page-break {
             page-break-after: always;
-        } 
+        }
 
         h2 {
             text-align: center;
@@ -59,12 +60,13 @@
             width: 50%;
             display: flex;
             flex-direction: column;
-            position: relative; /* ✅ Fix absolute child elements */
+            position: relative;
+            /* ✅ Fix absolute child elements */
         }
 
         #emp_data {
-           position:relative;
-           top: 140px;
+            position: relative;
+            top: 140px;
             left: 70px;
         }
 
@@ -79,8 +81,8 @@
             top: 81px;
             left: 50px;
             height: 25px;
-           
-            
+
+
         }
 
         #age {
@@ -88,8 +90,8 @@
             top: 82px;
             left: 8px;
             height: 25px;
-          
-            
+
+
         }
 
         #gender {
@@ -97,18 +99,18 @@
             top: 55px;
             left: 70px;
             height: 25px;
-        
+
         }
 
-        
+
         .fil {
             position: relative;
             top: 30px;
             left: 210px;
             height: 25px;
-         
+
         }
-        
+
         #workplace {
             position: relative;
             top: 30px;
@@ -117,7 +119,7 @@
             justify-content: flex-start;
             align-items: end; */
             height: 25px;
-           
+
         }
 
         .left #sig {
@@ -136,7 +138,8 @@
             left: 3px;
         }
 
-        #ins, #doc {
+        #ins,
+        #doc {
             display: flex;
             border: 50px;
             justify-content: center;
@@ -158,7 +161,7 @@
             margin-top: 125px;
         }
 
-        .Meds{
+        .Meds {
             position: relative;
             display: flex;
             gap: 160px;
@@ -167,11 +170,12 @@
             top: 267px;
         }
 
-        .dos{
+        .dos {
             text-transform: lowercase;
         }
 
-        .med_result, .do {
+        .med_result,
+        .do {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -187,57 +191,74 @@
         }
 
         .sir-a {
-            width: 110px;
-            height: 110px;
-            position: absolute; /* Position the image absolutely */
-            top: -45px; /* Adjust as needed */
-        left: 120px; /* Adjust as needed */
-        z-index: 1; /* Puts image behind the text */
-      
-    }
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: -35px;
+            left: 130px;
+            z-index: 1;
+        }
 
-    .sir-doc {
-        width: 150px;
-        height: 150px;
-        position: absolute; /* Position the image absolutely */
-        top: -15px; /* Adjust as needed */
-        left: 130px; /* Adjust as needed */
-        z-index: 1; /* Puts image behind the text */
-        /* filter: contrast(300%);
+        .sir-g {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: -40px;
+            left: 150px;
+            z-index: 1;
+        }
+
+        .sir-doc {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            /* Position the image absolutely */
+            top: -15px;
+            /* Adjust as needed */
+            left: 130px;
+            /* Adjust as needed */
+            z-index: 1;
+            /* Puts image behind the text */
+            /* filter: contrast(300%);
         filter: drop-shadow(1px 1px 0px black)  */
             /* drop-shadow(-1px -1px 0px black) */
             /* drop-shadow(1px -1px 0px black) */
             /* drop-shadow(-1px 1px 0px black); */
-      
-    }
 
-    .non {
-    width: 330px;
-    height: 210px;
-    position: absolute; /* Position the image absolutely */
-    top: 5px; /* Adjust as needed */
-    left: 30px; /* Adjust as needed */
-    z-index: -1; /* Puts image behind the text */
-    transform: rotate(180deg); /* Rotates the image */
-}
+        }
 
-.non-2 {
-    width: 330px;
-    height: 210px;
-    position: absolute; /* Position the image absolutely */
-    top: 290px; /* Adjust as needed */
-    right: -350px; /* Adjust as needed */
-    z-index: -1; /* Puts image behind the text */
-    transform: rotate(360deg); /* Rotates the image */
-}
+        .non {
+            width: 330px;
+            height: 210px;
+            position: absolute;
+            /* Position the image absolutely */
+            top: 5px;
+            /* Adjust as needed */
+            left: 30px;
+            /* Adjust as needed */
+            z-index: -1;
+            /* Puts image behind the text */
+            transform: rotate(180deg);
+            /* Rotates the image */
+        }
 
-
-
-
-
-        
+        .non-2 {
+            width: 330px;
+            height: 210px;
+            position: absolute;
+            /* Position the image absolutely */
+            top: 290px;
+            /* Adjust as needed */
+            right: -350px;
+            /* Adjust as needed */
+            z-index: -1;
+            /* Puts image behind the text */
+            transform: rotate(360deg);
+            /* Rotates the image */
+        }
     </style>
 </head>
+
 <body>
 
     @foreach ($healthCards as $health)
@@ -249,13 +270,13 @@
                 'others' => asset('images/non.png')
             ];
 
-            $imgSrc = $img_type[$health->health_card_type] ?? asset ('images/default.jpg');
+            $imgSrc = $img_type[$health->health_card_type] ?? asset('images/default.jpg');
         @endphp
         <div class="card">
             <div class="left">
 
-                 <img class="non" src="{{ $imgSrc }}" alt="Signature">
-                 <img class="non-2" src="{{ $imgSrc }}" alt="Signature">
+                <img class="non" src="{{ $imgSrc }}" alt="Signature">
+                <img class="non-2" src="{{ $imgSrc }}" alt="Signature">
                 <p id="form">EHS FORM NO. 102-{{ $health->health_card_type == 'food' ? 'A' : 'B' }} </p>
                 <p id="scode">{{ $health->print_code }}</p>
                 <div id="emp_data">
@@ -264,24 +285,48 @@
                     <p id="age">{{ $health->age }}</p>
                     <p id="gender">{{ $health->gender }}</p>
                     <p class="fil">FILIPINO</p>
-                    <p id="workplace" style="font-size: {{ strlen(str_replace(' ', '', $health->place_of_employment)) >= 20 ? '9px' : '13px' }};">
+                    <p id="workplace"
+                        style="font-size: {{ strlen(str_replace(' ', '', $health->place_of_employment)) >= 20 ? '9px' : '13px' }};">
                         {{ $health->place_of_employment }}
                     </p>
                 </div>
 
                 <div id="sig">
-                   
-                    <p id="ins">AARON JAY C. GONZALES</p>
-                    <p id="doc">BENJAMIN Q. BENGCO III, M.D.</p>
-                    <img class="sir-a" src="{{ asset('images/A-sig.png') }}" alt="Signature">
+
+                    <p id="ins">{{ $health->inspector_name }}</p>
+                    <p id="doc">benjamin q. bengco iii, md</p>
+
+                    @if(Str::lower($health->inspector_name) === 'aaron jay c. gonzales')
+                        <img class="sir-a" src="{{ asset('images/A-sig.png') }}" alt="Signature">
+                    @else
+                        <img class="sir-g" src="{{ asset('images/sir-g.png') }}" alt="Signature">
+                    @endif
+
                     <img class="sir-doc" src="{{ asset('images/DOC-B.png') }}" alt="Signature">
-                   
+
+                    <!-- <p id="ins">AARON JAY C. GONZALES</p>
+                            <p id="doc">BENJAMIN Q. BENGCO III, M.D.</p>
+                            <img class="sir-a" src="{{ asset('images/A-sig.png') }}" alt="Signature">
+                            <img class="sir-doc" src="{{ asset('images/DOC-B.png') }}" alt="Signature"> -->
+
                 </div>
+
+                <!-- <div id="sig">
+
+                            <p id="ins">GREGORIO B. ARCEO</p>
+                            <p id="doc">BENJAMIN Q. BENGCO III, M.D.</p>
+                            <img class="sir-a" src="{{ asset('images/sir-g.png') }}" alt="Signature">
+                            <img class="sir-doc" src="{{ asset('images/DOC-B.png') }}" alt="Signature">
+
+                        </div> -->
+
+
+
             </div>
             <div class="right">
-          
+
                 <div id="date">
-             
+
                     <p>{{ \Carbon\Carbon::parse($health->date_of_issuance)->format('F d, Y') }}</p>
                     <p>{{ \Carbon\Carbon::parse($health->date_of_expiration)->format('F d, Y') }}</p>
                 </div>
@@ -299,17 +344,18 @@
                         <p class="dos">-do-</p>
                     </div>
                 </div>
-             
+
             </div>
-           
+
 
         </div>
 
-      
+
 
         <div class="page-break"></div>
         <!-- Page Break After Each Card -->
     @endforeach
 
 </body>
+
 </html>

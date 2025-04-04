@@ -70,6 +70,20 @@
                                 value="{{ old('designation', $health->designation) }}">
                         </div>
 
+                        <!-- Barangay -->
+                        <div class="mb-3">
+                            <label for="barangay" class="form-label">Barangay</label>
+                            <input type="text" class="form-control" id="barangay" name="barangay"
+                                value="{{ old('barangay', $health->barangay) }}">
+                        </div>
+
+                        <!-- Inspector Name -->
+                        <div class="mb-3">
+                            <label for="inspector_name" class="form-label">Inspector Name</label>
+                            <input type="text" class="form-control" id="inspector_name" name="inspector_name"
+                                value="{{ old('inspector_name', $health->inspector_name) }}">
+                        </div>
+
                         <!-- Date of Issuance -->
                         <div class="mb-3">
                             <label for="date_of_issuance" class="form-label">Date of

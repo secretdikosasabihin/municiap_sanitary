@@ -22,8 +22,8 @@
                     @forelse($nonFood as $health)
                         <tr>
                             <td>
-                                <input type="checkbox" class="selected" form="generatePdfForm" name="selected_health_cards[]"
-                                    value="{{ $health->id }}">
+                                <input type="checkbox" class="selected" form="generatePdfForm"
+                                    name="selected_health_cards[]" value="{{ $health->id }}">
                             </td>
                             <td>{{$health->print_code}}</td>
                             <td>{{$health->full_name}}</td>
@@ -116,6 +116,23 @@
                                                         <input type="text" class="form-control" id="designation"
                                                             name="designation"
                                                             value="{{ old('designation', $health->designation) }}">
+                                                    </div>
+
+                                                    <!-- Barangay -->
+                                                    <div class="mb-3">
+                                                        <label for="barangay" class="form-label">Barangay</label>
+                                                        <input type="text" class="form-control" id="barangay"
+                                                            name="barangay"
+                                                            value="{{ old('barangay', $health->barangay) }}">
+                                                    </div>
+
+                                                    <!-- Inspector Name -->
+                                                    <div class="mb-3">
+                                                        <label for="inspector_name" class="form-label">Inspector
+                                                            Name</label>
+                                                        <input type="text" class="form-control" id="inspector_name"
+                                                            name="inspector_name"
+                                                            value="{{ old('inspector_name', $health->inspector_name) }}">
                                                     </div>
 
                                                     <!-- Date of Issuance -->

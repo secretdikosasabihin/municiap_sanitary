@@ -200,6 +200,16 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="barangay" class="form-label">Barangay</label>
+                                    <input type="text" class="form-control" id="barangay" name="barangay">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="inspector_name" class="form-label">Inspector Name</label>
+                                    <input type="text" class="form-control" id="inspector_name" name="inspector_name">
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="date_of_issuance" class="form-label">Date of Issuance</label>
                                     <input type="date" class="form-control" id="date_of_issuance"
                                         name="date_of_issuance" required>

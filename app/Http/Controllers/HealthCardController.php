@@ -21,9 +21,9 @@ class HealthCardController extends Controller
         $confirmed = $request->input('confirmed');
         $dateFrom = $request->input('date_from');
         $dateTo = $request->input('date_to');
-    
+
         $query = HealthCard::query();
-    
+
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('place_of_employment', 'like', "%{$search}%")
@@ -31,19 +31,19 @@ class HealthCardController extends Controller
                     ->orWhere('health_card_type', 'like', "%{$search}%");
             });
         }
-    
+
         if ($employmentType) {
             $query->where('place_of_employment', 'like', "%{$employmentType}%");
         }
-    
+
         if ($healthCardType) {
             $query->where('health_card_type', $healthCardType);
         }
-    
+
         if (!is_null($confirmed)) {
             $query->where('confirmed', $confirmed);
         }
-    
+
         if ($dateFrom && $dateTo) {
             $query->whereBetween('created_at', [$dateFrom, $dateTo]);
         } elseif ($dateFrom) {
@@ -51,34 +51,34 @@ class HealthCardController extends Controller
         } elseif ($dateTo) {
             $query->whereDate('created_at', '<=', $dateTo);
         }
-    
+
         $healthCard = $query->orderBy("created_at", "desc")->paginate(50)->appends(request()->query());
-    
+
         $filteredQuery = function ($q) use ($search) {
             if ($search) {
                 $q->where('place_of_employment', 'like', "%{$search}%")
                     ->orWhere('full_name', 'like', "%{$search}%");
             }
         };
-    
+
         $nonFood = HealthCard::where('health_card_type', 'non_food')
             ->where($filteredQuery)
             ->orderBy("created_at", "desc")
             ->paginate(50)
             ->appends(request()->query());
-    
+
         $food = HealthCard::where('health_card_type', 'food')
             ->where($filteredQuery)
             ->orderBy("created_at", "desc")
             ->paginate(50)
             ->appends(request()->query());
-    
+
         $others = HealthCard::where('health_card_type', 'others')
             ->where($filteredQuery)
             ->orderBy("created_at", "desc")
             ->paginate(50)
             ->appends(request()->query());
-    
+
         $printed = HealthCard::where('confirmed', true)
             ->where($filteredQuery)
             ->orderBy("created_at", "desc")
@@ -90,7 +90,7 @@ class HealthCardController extends Controller
             ->orderBy("created_at", "desc")
             ->paginate(50)
             ->appends(request()->query());
-    
+
         return view("healthCard.healthCard", compact('healthCard', 'nonFood', 'food', 'others', 'notprinted', 'printed', 'search', 'employmentType', 'healthCardType', 'confirmed', 'dateFrom', 'dateTo'));
     }
 
@@ -104,6 +104,8 @@ class HealthCardController extends Controller
             'gender' => 'nullable|max:15',
             'place_of_employment' => 'required|max:255',
             'designation' => 'max:255',
+            'barangay' => 'nullable|max:255',
+            'inspector_name' => 'nullable|max:255',
             'date_of_issuance' => 'required|date',
         ]);
 
@@ -130,6 +132,8 @@ class HealthCardController extends Controller
             'gender' => $request->gender,
             'place_of_employment' => $request->place_of_employment,
             'designation' => $request->designation,
+            'barangay' => $request->inspector_name,
+            'inspector_name' => $request->inspector_name,
             'date_of_issuance' => $issuanceDate,
             'date_of_expiration' => $expirationDate,
             'print_code' => $printCode,
@@ -147,6 +151,8 @@ class HealthCardController extends Controller
             'gender' => 'nullable|max:15',
             'place_of_employment' => 'max:255',
             'designation' => 'max:255',
+            'barangay' => 'nullable|max:255',
+            'inspector_name' => 'nullable|max:255',
             'date_of_issuance' => 'required|date',
         ]);
 
@@ -171,6 +177,8 @@ class HealthCardController extends Controller
                 'gender' => $request->gender,
                 'place_of_employment' => $request->place_of_employment,
                 'designation' => $request->designation,
+                'barangay' => $request->barangay,
+                'inspector_name' => $request->inspector_name,
                 'date_of_issuance' => $request->date_of_issuance,
                 'date_of_expiration' => $expirationDate, // ✅ Now updating expiration date
             ]);

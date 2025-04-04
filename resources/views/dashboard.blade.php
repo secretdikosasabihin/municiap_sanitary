@@ -212,8 +212,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="contact_number" class="form-label">Contact Number</label>
-                                    <input type="text" class="form-control" id="contact_number" name="contact_number"
-                                        required>
+                                    <input type="text" class="form-control" id="contact_number" name="contact_number">
                                 </div>
                                 <div class="mb-3">
                                     <label for="barangay" class="form-label">Barangay</label>
