@@ -89,16 +89,37 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label class="form-label">Citizenship</label>
                                 <select id="updateCitizenshipSelect" class="form-select" style="border: 1px solid;">
-                                    <option value="FILIPINO" {{ old('citizenship', $death->citizenship) == 'FILIPINO' ? 'selected' : '' }}>FILIPINO</option>
-                                    <option value="OTHERS" {{ old('citizenship', $death->citizenship) == 'OTHERS' ? 'selected' : '' }}>OTHERS</option>
+                                    <option value="FILIPINO" {{ old('citizenship', $death->citizenship) == 'FILIPINO' ? 'selected' : '' }}>
+                                        FILIPINO
+                                    </option>
+                                    <option value="OTHERS" {{ old('citizenship', $death->citizenship) == 'OTHERS' ? 'selected' : '' }}>
+                                        Others
+                                    </option>
                                 </select>
                                 <input type="text" name="updateCitizenship_other" id="updateCitizenship_otherInput"
                                     class="form-control mt-2" placeholder="Enter citizenship"
                                     style="display: none; border: 1px solid;"
-                                    value="{{ old('updateCitizenship_other', $death->citizenship !== 'FILIPINO' ? $death->citizenship : '') }}">
+                                    value="{{ old('updateCitizenship_other', $death->citizenship != 'FILIPINO' && $death->citizenship != '' ? $death->citizenship : '') }}">
+                                <input type="hidden" name="citizenship" id="updateCitizenshipHidden"
+                                    value="{{ old('citizenship', $death->citizenship) }}">
+                            </div> -->
+                            <div class="mb-3">
+                                <label class="form-label">Citizenship</label>
+                                <select id="updateCitizenshipSelect" class="form-select" style="border: 1px solid;">
+                                    <option value="FILIPINO" {{ old('citizenship', $death->citizenship) == 'FILIPINO' ? 'selected' : '' }}>
+                                        FILIPINO
+                                    </option>
+                                    <option value="OTHERS" {{ old('citizenship', $death->citizenship) == 'OTHERS' ? 'selected' : '' }}>
+                                        Others
+                                    </option>
+                                </select>
+                                <input type="text" name="updateCitizenship_other" id="updateCitizenship_otherInput"
+                                    class="form-control mt-2" placeholder="Enter citizenship"
+                                    style="display: none; border: 1px solid;"
+                                    value="{{ old('updateCitizenship_other', $death->citizenship != 'FILIPINO' && $death->citizenship != '' ? $death->citizenship : '') }}">
                                 <input type="hidden" name="citizenship" id="updateCitizenshipHidden"
                                     value="{{ old('citizenship', $death->citizenship) }}">
                             </div>
@@ -171,7 +192,6 @@
                                 <select id="updateRelationshipSelect" class="form-select" style="border: 1px solid;">
                                     <option value="MOTHER" {{ old('relationship', $death->relationship) == 'MOTHER' ? 'selected' : '' }}>MOTHER</option>
                                     <option value="FATHER" {{ old('relationship', $death->relationship) == 'FATHER' ? 'selected' : '' }}>FATHER</option>
-                                    <option value="WIFE" {{ old('relationship', $death->relationship) == 'WIFE' ? 'selected' : '' }}>WIFE</option>
                                     <option value="SPOUSE" {{ old('relationship', $death->relationship) == 'SPOUSE' ? 'selected' : '' }}>SPOUSE</option>
                                     <option value="GRANDMOTHER" {{ old('relationship', $death->relationship) == 'GRANDMOTHER' ? 'selected' : '' }}>GRANDMOTHER</option>
                                     <option value="GRANDFATHER" {{ old('relationship', $death->relationship) == 'GRANDFATHER' ? 'selected' : '' }}>GRANDFATHER</option>
@@ -183,12 +203,11 @@
                                 <input type="text" name="update_relationship_other" id="updateRelationship_otherInput"
                                     class="form-control mt-2" placeholder="Enter Relationship"
                                     style="display: none; border: 1px solid;"
-                                    value="{{ old('update_relationship_other', !in_array($death->relationship, ['MOTHER', 'FATHER', 'GRANDMOTHER', 'GRANDFATHER', 'SON', 'DAUGHTER', 'SIBLING']) ? $death->relationship : '') }}">
+                                    value="{{ old('update_relationship_other', !in_array($death->relationship, ['MOTHER', 'FATHER', 'SPOUSE', 'GRANDMOTHER', 'GRANDFATHER', 'SON', 'DAUGHTER', 'SIBLING']) ? $death->relationship : '') }}">
                                 <input type="hidden" name="relationship" id="updateRelationshipHidden"
                                     value="{{ old('relationship', $death->relationship) }}">
                             </div>
                         </div>
-
                     </div>
                     <br>
                     <hr>
@@ -200,7 +219,7 @@
                                     style="border: 1px solid;">
                                     <option value="CARDIO-RESPIRATORY ARREST" {{ old('cause_of_death_a', $death->cause_of_death_a) == 'CARDIO-RESPIRATORY ARREST' ? 'selected' : '' }}>
                                         CARDIO-RESPIRATORY ARREST</option>
-                                    <option value="OTHERS" {{ old('cause_of_death_a', $death->cause_of_death_a) == 'OTHERS' ? 'selected' : '' }}>Others</option>
+                                    <option value="OTHERS" {{ old('cause_of_death_a', $death->cause_of_death_a) == '' ? 'selected' : '' }}>Others</option>
                                 </select>
                                 <input type="text" name="update_cause_of_death_a_other"
                                     id="update_cause_of_death_a_otherInput" class="form-control mt-2"
@@ -226,14 +245,22 @@
                                     value="{{ old('cause_of_death_c', $death->cause_of_death_c) }}">
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Cause of Death D</label>
+                                <input type="text" name="cause_of_death_d" class="form-control"
+                                    style="border: 1px solid;"
+                                    value="{{ old('cause_of_death_d', $death->cause_of_death_d) }}">
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
+
                         <!-- Doctor -->
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Doctor</label>
-                                <select id="updateDoctorSelect" class="form-select" style="border: 1px solid;" required>
-                                    <option value="" disabled>Select a doctor</option>
+                                <select id="updateDoctorSelect" class="form-select" style="border: 1px solid;">
                                     <option value="BENJAMIN Q. BENGCO III, M.D." {{ old('doctor', $death->doctor) == 'BENJAMIN Q. BENGCO III, M.D.' ? 'selected' : '' }}>BENJAMIN Q.
                                         BENGCO III, M.D.</option>
                                     <option value="GLADYS LOURDES B. BENGCO, M.D." {{ old('doctor', $death->doctor) == 'GLADYS LOURDES B. BENGCO, M.D.' ? 'selected' : '' }}>GLADYS
@@ -252,7 +279,6 @@
                                     value="{{ old('doctor', $death->doctor) }}">
                             </div>
                         </div>
-
 
                         <!-- Doctor's Position -->
                         <div class="col-md-3">
@@ -364,8 +390,8 @@
                                         JAY C. GONZALES</option>
                                     <option value="GERALD B. CASTRO" {{ old('prepared_by_name', $death->prepared_by_name) == 'GERALD B. CASTRO' ? 'selected' : '' }}>GERALD B.
                                         CASTRO</option>
-                                    <option value="HEIDY D. PAREDE" {{ old('prepared_by_name', $death->prepared_by_name) == 'HEIDY D. PAREDE' ? 'selected' : '' }}>HEIDY D.
-                                        PAREDE</option>
+                                    <option value="HEIDY D. PADERE" {{ old('prepared_by_name', $death->prepared_by_name) == 'HEIDY D. PADERE' ? 'selected' : '' }}>HEIDY D.
+                                    PADERE</option>
                                     <option value="OTHERS" {{ !in_array(old('prepared_by_name', $death->prepared_by_name), ['AARON JAY C. GONZALES', 'GERALD B. CASTRO', 'HEIDY D. PAREDE']) ? 'selected' : '' }}>Others</option>
                                 </select>
                                 <input type="text" name="updatePreparedByName_other"
@@ -418,10 +444,49 @@
     </div>
 </div>
 
-
-
 <!-- citizenship -->
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function setupCitizenshipHandler() {
+            const selectElement = document.getElementById("updateCitizenshipSelect");
+            const otherInput = document.getElementById("updateCitizenship_otherInput");
+            const hiddenInput = document.getElementById("updateCitizenshipHidden");
+
+            if (!selectElement || !otherInput || !hiddenInput) {
+                console.error("Update cause of death elements missing!");
+                return;
+            }
+
+            function toggleOtherInput() {
+                if (selectElement.value === "OTHERS") {
+                    otherInput.style.display = "block";
+                    hiddenInput.value = otherInput.value || "OTHERS";
+                } else {
+                    otherInput.style.display = "none";
+                    otherInput.value = "";
+                    hiddenInput.value = selectElement.value;
+                }
+            }
+
+            // ✅ Auto-display input if the previous value was custom or null
+            if (hiddenInput.value === "OTHERS" || hiddenInput.value === "" || hiddenInput.value === null) {
+                selectElement.value = "OTHERS";
+                otherInput.style.display = "block";
+                otherInput.value = hiddenInput.value || ''; // Maintain the previous input if it was null
+            } else {
+                selectElement.value = hiddenInput.value;
+            }
+
+            toggleOtherInput(); // Run on load
+            selectElement.addEventListener("change", toggleOtherInput);
+            otherInput.addEventListener("input", () => hiddenInput.value = otherInput.value);
+        }
+
+        // Setup for Update Form only
+        setupCitizenshipHandler();
+    });
+</script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         function setupUpdateCauseOfDeathHandler() {
             const selectElement = document.getElementById("updateCitizenshipSelect");
@@ -459,7 +524,7 @@
         // Setup for Update Form only
         setupUpdateCauseOfDeathHandler();
     });
-</script>
+</script> -->
 
 <!-- relationship -->
 <script>
@@ -518,7 +583,7 @@
             function toggleOtherInput() {
                 if (selectElement.value === "OTHERS") {
                     otherInput.style.display = "block";
-                    hiddenInput.value = otherInput.value || "OTHERS";
+                    hiddenInput.value = otherInput.value || "";
                 } else {
                     otherInput.style.display = "none";
                     otherInput.value = "";

@@ -194,7 +194,7 @@
             width: 90px;
             height: 90px;
             position: absolute;
-            top: -35px;
+            top: -25px;
             left: 130px;
             z-index: 1;
         }

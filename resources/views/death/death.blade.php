@@ -208,6 +208,7 @@
                             <th>A</th>
                             <th>B</th>
                             <th>C</th>
+                            <th>D</th>
                             <th>Doctor</th>
                             <th>Reviewed by</th>
                             <th>Addres s</th>
@@ -215,8 +216,6 @@
                             <th>Date</th>
                             <th>remarks</th>
                             <th>Update</th>
-
-
                         </tr>
                     </thead>
                     <tbody>
@@ -245,6 +244,7 @@
                                 <td>{{ $death->cause_of_death_a}}</td>
                                 <td>{{ $death->cause_of_death_b}}</td>
                                 <td>{{ $death->cause_of_death_c}}</td>
+                                <td>{{ $death->cause_of_death_d}}</td>
                                 <td>{{ $death->doctor }} ({{ $death->doctor_position }})</td>
                                 <td>{{ $death->reviewed_by }} ({{ $death->reviewed_position }})</td>
                                 <td>{{ $death->address}}</td>

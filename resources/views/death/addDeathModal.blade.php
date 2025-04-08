@@ -91,7 +91,7 @@
                                 <input type="text" name="citizenship_other" id="citizenship_otherInput"
                                     class="form-control mt-2" placeholder="Enter citizenship"
                                     style="display: none; border: 1px solid;">
-                                <input type="hidden" name="citizenship" id="citizenshipHidden" value="FILIPINO">
+                                <input type="hidden" name="citizenship" id="citizenshipHidden" value="FILIPINO" required>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -172,9 +172,9 @@
                             <div class="mb-3">
                                 <label class="form-label">Relationship</label>
                                 <select id="relationshipSelect" class="form-select" style="border: 1px solid;">
+                                    <option value=""selected>Select a relationship</option>
                                     <option value="MOTHER">MOTHER</option>
                                     <option value="FATHER">FATHER</option>
-                                    <option value="WIFE">WIFE</option>
                                     <option value="SPOUSE">SPOUSE</option>
                                     <option value="GRANDMOTHER">GRANDMOTHER</option>
                                     <option value="GRANDFATHER">GRANDFATHER</option>
@@ -186,8 +186,7 @@
                                 <input type="text" name="relationship_other" id="relationship_otherInput"
                                     class="form-control mt-2" placeholder="Enter relationship"
                                     style="display: none; border: 1px solid;">
-                                <input type="hidden" name="relationship" id="relationshipHidden"
-                                    value="MOTHER">
+                                <input type="hidden" name="relationship" id="relationshipHidden" required>
                             </div>
                         </div>
                     </div>
@@ -219,6 +218,13 @@
                             <div class="mb-3">
                                 <label class="form-label">Cause of Death C</label>
                                 <input type="text" name="cause_of_death_c" class="form-control"
+                                    style="border: 1px solid;">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Cause of Death D</label>
+                                <input type="text" name="cause_of_death_d" class="form-control"
                                     style="border: 1px solid;">
                             </div>
                         </div>
@@ -329,7 +335,7 @@
                                     <option value="" disabled selected>Select a name</option>
                                     <option value="AARON JAY C. GONZALES">AARON JAY C. GONZALES</option>
                                     <option value="GERALD B. CASTRO">GERALD B. CASTRO</option>
-                                    <option value="HEIDY D. PAREDE">HEIDY D. PAREDE</option>
+                                    <option value="HEIDY D. PADERE">HEIDY D. PADERE</option>
                                     <option value="OTHERS">Others</option>
                                 </select>
                                 <input type="text" name="prepared_by_name_other" id="prepared_by_name_otherInput"

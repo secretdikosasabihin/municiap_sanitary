@@ -199,6 +199,17 @@
             left: 450px;
         }
 
+        .occupation {
+            position: absolute;
+            display: flex;
+            justify-content: start;
+            align-items: end;
+            height: 20px;
+            /* border: 1px solid red; */
+            top: 373px;
+            left: 95px;
+        }
+
         .father {
             position: absolute;
             display: flex;
@@ -254,6 +265,17 @@
             left: 255px;
         }
 
+        .codD {
+            position: absolute;
+            display: flex;
+            justify-content: start;
+            align-items: end;
+            height: 20px;
+            /* border: 1px solid red; */
+            top: 498px;
+            left: 370px;
+        }
+
         .att1 {
             position: absolute;
             display: flex;
@@ -272,8 +294,8 @@
             align-items: end;
             height: 20px;
             /* border: 1px solid red; */
-            top: 693px;
-            left: 89px;
+            top: 696px;
+            left: 92px;
         }
 
         .doctor {
@@ -474,11 +496,13 @@
                 <p class="religion">{{ $death->religion }}</p>
                 <p class="citizenship">{{ $death->citizenship }}</p>
                 <p class="residence">{{ $death->residence }}</p>
+                <p class="occupation">{{ $death->occupation }}</p>
                 <p class="father">{{ $death->name_of_father }}</p>
                 <p class="mother">{{ $death->name_of_mother }}</p>
                 <p class="codA">{{ $death->cause_of_death_a }}</p>
                 <p class="codB">{{ $death->cause_of_death_b }}</p>
                 <p class="codC">{{ $death->cause_of_death_c }}</p>
+                <p class="codD">{{ $death->cause_of_death_d }}</p>
                 <p class="att1">X</p>
                 <p class="att2">X</p>
                 <p class="doctor">{{ $death->doctor }}</p>

@@ -132,7 +132,7 @@ class HealthCardController extends Controller
             'gender' => $request->gender,
             'place_of_employment' => $request->place_of_employment,
             'designation' => $request->designation,
-            'barangay' => $request->inspector_name,
+            'barangay' => $request->barangay,
             'inspector_name' => $request->inspector_name,
             'date_of_issuance' => $issuanceDate,
             'date_of_expiration' => $expirationDate,
